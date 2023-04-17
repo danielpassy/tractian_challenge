@@ -9,7 +9,7 @@ import {
 import { mapAssets } from './asset.map';
 import { CreateAssetDto } from 'src/application/dtos';
 import { AssetUseCases } from 'src/application/use-cases';
-import { UserNotFoundError } from 'src/application/errors';
+import { UnitNotFoundError, UserNotFoundError } from 'src/application/errors';
 
 @Controller('asset')
 export class AssetController {
@@ -27,12 +27,19 @@ export class AssetController {
       const assetEntity = await this.assetUseCase.create(assetDto);
       return mapAssets([assetEntity]);
     } catch (error) {
-      throw error instanceof UserNotFoundError
-        ? new HttpException(
-            `There's no units with id ${assetDto.owner_id}`,
-            HttpStatus.NOT_FOUND,
-          )
-        : Error();
+      if (error instanceof UserNotFoundError) {
+        throw new HttpException(
+          `There's no User with id ${assetDto.owner_id}`,
+          HttpStatus.NOT_FOUND,
+        );
+      } else if (error instanceof UnitNotFoundError) {
+        throw new HttpException(
+          `There's no Unit with id ${assetDto.unit_id}`,
+          HttpStatus.NOT_FOUND,
+        );
+      } else {
+        throw Error();
+      }
     }
   }
 }

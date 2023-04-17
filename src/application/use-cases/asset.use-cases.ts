@@ -4,7 +4,7 @@ import { AssetRepository } from 'src/infra/repositories/asset.repository';
 import { Injectable } from '@nestjs/common';
 import { UnitRepository } from 'src/infra/repositories/unit.repository';
 import { UserRepository } from 'src/infra/repositories';
-import { UserNotFoundError } from '../errors';
+import { UnitNotFoundError, UserNotFoundError } from '../errors';
 
 @Injectable()
 export class AssetUseCases {
@@ -17,21 +17,25 @@ export class AssetUseCases {
   async getMany(): Promise<AssetEntity[]> {
     return await this.assetRepository.getAll();
   }
-  async create(asset: CreateAssetDto): Promise<AssetEntity> {
-    const owner = await this.userRepository.get(asset.owner_id);
+  async create(assetDto: CreateAssetDto): Promise<AssetEntity> {
+    const owner = await this.userRepository.get(assetDto.owner_id);
+    const unit = await this.unitRepository.get(assetDto.unit_id);
 
     if (!owner) throw new UserNotFoundError();
+    if (!unit) throw new UnitNotFoundError();
 
     const assetEntity = new AssetEntity({
-      image: asset.image,
-      name: asset.name,
-      description: asset.description,
-      model: asset.model,
-      status: asset.status,
-      health_level: asset.health_level,
-      owner: new UserEntity({ id: asset.owner_id }),
-      unit: new UnitEntity({ id: asset.unit_id }),
+      image: assetDto.image,
+      name: assetDto.name,
+      description: assetDto.description,
+      model: assetDto.model,
+      status: assetDto.status,
+      health_level: assetDto.health_level,
+      owner_id: assetDto.owner_id,
+      unit_id: assetDto.unit_id,
     });
-    return await this.unitRepository.addAsset(assetEntity);
+    const asset = await this.assetRepository.create(assetEntity);
+    await this.unitRepository.addAsset(asset);
+    return asset;
   }
 }

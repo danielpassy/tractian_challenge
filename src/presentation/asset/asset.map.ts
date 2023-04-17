@@ -6,7 +6,7 @@ export const mapAssets = (assetEntities: AssetEntity[]) => {
     name: asset.name,
     description: asset.description,
     model: asset.model,
-    owner: asset.owner,
+    owner: asset.owner_id,
     status: asset.status,
     health_level: asset.health_level,
     id: asset.id,

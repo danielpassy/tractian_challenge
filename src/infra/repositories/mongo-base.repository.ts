@@ -1,5 +1,6 @@
 import { Model } from 'mongoose';
 import { IGenericRepository } from './generic.repository';
+import { map } from 'rxjs';
 
 export class MongoBaseRepository<T> implements IGenericRepository<T> {
   _mongoDocument: Model<any & Document>;
@@ -13,13 +14,14 @@ export class MongoBaseRepository<T> implements IGenericRepository<T> {
     return entries.map((e) => e.toEntity());
   }
 
-  async get(id: any): Promise<T> {
+  async get(id: any): Promise<T | null> {
     const entry = await this._mongoDocument.findById(id).exec();
-    return entry.toEntity();
+    return entry?.toEntity() || null;
   }
 
-  create(item: T): Promise<T> {
-    return this._mongoDocument.create(item);
+  async create(item: T): Promise<T> {
+    const entry = await this._mongoDocument.create(item);
+    return entry.toEntity();
   }
 
   update(id: string, item: T) {
