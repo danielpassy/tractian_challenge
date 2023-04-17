@@ -1,5 +1,6 @@
 import { Type } from 'class-transformer';
 import {
+  IsMongoId,
   IsNotEmptyObject,
   IsNumber,
   IsObject,
@@ -26,6 +27,6 @@ export class CreateUnitDto {
   @IsString()
   name: string;
 
-  @IsString()
+  @IsMongoId()
   unit_id: string;
 }

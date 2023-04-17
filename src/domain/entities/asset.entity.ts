@@ -1,6 +1,7 @@
 import { ModelEnum } from 'src/application/const/model.const';
 import { StatusEnum } from 'src/application/const/status.const';
 import { UserEntity } from './user.entity';
+import { UnitEntity } from './unit.entity';
 
 export class AssetEntity {
   public constructor(init?: Partial<AssetEntity>) {
@@ -15,4 +16,5 @@ export class AssetEntity {
   status: StatusEnum;
   health_level: number;
   id: string;
+  unit: UnitEntity;
 }

@@ -1,4 +1,4 @@
-import { IsEnum, IsNumber, IsString } from 'class-validator';
+import { IsEnum, IsMongoId, IsNumber, IsString } from 'class-validator';
 import { ModelEnum } from '../const/model.const';
 import { StatusEnum } from '../const/status.const';
 
@@ -15,7 +15,7 @@ export class CreateAssetDto {
   @IsEnum(ModelEnum)
   model: ModelEnum;
 
-  @IsString()
+  @IsMongoId()
   owner_id: string;
 
   @IsEnum(StatusEnum)
@@ -23,4 +23,7 @@ export class CreateAssetDto {
 
   @IsNumber()
   health_level: number;
+
+  @IsMongoId()
+  unit_id: string;
 }

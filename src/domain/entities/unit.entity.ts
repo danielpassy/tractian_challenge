@@ -5,7 +5,7 @@ export class UnitEntity {
     Object.assign(this, init);
   }
   assets: AssetEntity[];
-  id: number;
+  id: string;
   name: string;
   localization: Localization;
   createdAt: Date;
