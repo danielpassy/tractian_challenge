@@ -1,16 +1,17 @@
-import * as mongoose from 'mongoose';
-import { Schema, Document } from 'mongoose';
-import { UserEntity } from 'src/domain/entities';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
 
-const userShema = new Schema({
-  name: Schema.Types.String,
-  email: Schema.Types.String,
-  password: Schema.Types.String,
-});
+export type UserDocument = HydratedDocument<User>;
+@Schema()
+export class User {
+  @Prop()
+  name: string;
 
-interface IUserDocument extends UserEntity, Document {
-  _id: string;
+  @Prop()
+  email: string;
+
+  @Prop()
+  password: string;
 }
 
-export const UserModel =
-  mongoose.models.Company || mongoose.model<IUserDocument>('User', userShema);
+export const UserSchema = SchemaFactory.createForClass(User);

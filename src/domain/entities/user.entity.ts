@@ -1,6 +1,10 @@
 export class UserEntity {
+  public constructor(init?: Partial<UserEntity>) {
+    Object.assign(this, init);
+  }
   email: string;
   password: string;
   userId: string;
-  username: string;
+  name: string;
+  id?: any;
 }

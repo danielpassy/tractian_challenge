@@ -30,8 +30,8 @@ export class AuthUseCases implements IAuth {
     password: string,
     name: string,
   ): Promise<UserEntity> {
-    const user = await this.userRepository.findByEmail(email);
-    if (!user) {
+    const userEntry = await this.userRepository.findByEmail(email);
+    if (!userEntry) {
       throw new EmailAlreadyUsedError();
     }
     const user = new UserEntity({ email, password, name });

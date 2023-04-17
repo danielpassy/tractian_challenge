@@ -3,6 +3,10 @@ import { StatusEnum } from 'src/application/const/status.const';
 import { UserEntity } from './user.entity';
 
 export class AssetEntity {
+  public constructor(init?: Partial<AssetEntity>) {
+    Object.assign(this, init);
+  }
+
   image: string;
   name: string;
   description: string;

@@ -2,10 +2,10 @@ import { Model } from 'mongoose';
 import { IGenericRepository } from './generic.repository';
 
 export class MongoBaseRepository<T> implements IGenericRepository<T> {
-  private _mongoDocument: Model<T>;
+  _mongoDocument: Model<T>;
 
-  constructor(mongoDocument: Model<T>) {
-    this._mongoDocument = mongoDocument;
+  constructor(repository: Model<T>) {
+    this._mongoDocument = repository;
   }
 
   getAll(): Promise<T[]> {
@@ -22,12 +22,5 @@ export class MongoBaseRepository<T> implements IGenericRepository<T> {
 
   update(id: string, item: T) {
     return this._mongoDocument.findByIdAndUpdate(id, item);
-  }
-
-  async findOne(query: any, select?: keyof T) {
-    const data = await this.MongooseModel.findOne(query, select);
-    if (!data) return null;
-
-    return this.mapEntity(data.toObject());
   }
 }

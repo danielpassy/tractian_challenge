@@ -5,10 +5,10 @@ export const mapUnits = (unitEntities: UnitEntity[]) => {
     return {
       id: unitEntity.id,
       name: unitEntity.name,
-      location: {
-        lat: unitEntity.location.lat,
-        lng: unitEntity.location.lng,
-        address: unitEntity.location.address,
+      Localization: {
+        lat: unitEntity.localization.lat,
+        lng: unitEntity.localization.lng,
+        address: unitEntity.localization.address,
       },
       createdAt: unitEntity.createdAt,
     };
