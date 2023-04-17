@@ -8,12 +8,14 @@ export class MongoBaseRepository<T> implements IGenericRepository<T> {
     this._mongoDocument = repository;
   }
 
-  getAll(): Promise<T[]> {
-    return this._mongoDocument.find().exec();
+  async getAll(): Promise<T[]> {
+    const entries = await this._mongoDocument.find().exec();
+    return entries.map((e) => e.toEntity());
   }
 
-  get(id: any): Promise<T> {
-    return this._mongoDocument.findById(id).exec();
+  async get(id: any): Promise<T> {
+    const entry = await this._mongoDocument.findById(id).exec();
+    return entry.toEntity();
   }
 
   create(item: T): Promise<T> {

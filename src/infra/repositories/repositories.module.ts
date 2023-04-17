@@ -4,6 +4,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from '../db/user.schema';
 import { Asset, AssetSchema } from '../db/asset.schema';
 import { Unit, UnitSchema } from '../db/unit.schema';
+import { AssetRepository } from './asset.repository';
+import { UnitRepository } from './unit.repository';
 
 @Module({
   imports: [
@@ -13,7 +15,7 @@ import { Unit, UnitSchema } from '../db/unit.schema';
       { name: Unit.name, schema: UnitSchema },
     ]),
   ],
-  exports: [UserRepository],
-  providers: [UserRepository],
+  exports: [UserRepository, AssetRepository, UnitRepository],
+  providers: [UserRepository, AssetRepository, UnitRepository],
 })
 export class RepositoriesModule {}

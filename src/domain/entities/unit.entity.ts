@@ -1,8 +1,10 @@
+import { AssetEntity } from './asset.entity';
+
 export class UnitEntity {
   public constructor(init?: Partial<UnitEntity>) {
     Object.assign(this, init);
   }
-
+  assets: AssetEntity[];
   id: number;
   name: string;
   localization: Localization;

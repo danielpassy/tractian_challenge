@@ -19,7 +19,6 @@ export class AssetUseCases {
       owner: new UserEntity({ id: asset.owner_id }),
       status: asset.status,
       health_level: asset.health_level,
-      id: asset.id,
     });
     return await this.assetRepository.create(assetEntity);
   }

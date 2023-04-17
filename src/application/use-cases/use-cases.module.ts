@@ -8,9 +8,9 @@ import { RepositoriesModule } from 'src/infra/repositories/repositories.module';
 import { AuthUseCases } from './auth.use-cases';
 
 @Module({
-  exports: [AuthUseCases],
+  exports: [AuthUseCases, AssetUseCases, UnitUseCases],
   imports: [RepositoriesModule],
   controllers: [],
-  providers: [AuthUseCases],
+  providers: [AuthUseCases, AssetUseCases, UnitUseCases],
 })
 export class UseCasesModule {}

@@ -3,19 +3,19 @@ import { CreateUnitDto } from 'src/application/dtos';
 import { UnitUseCases } from 'src/application/use-cases';
 import { mapUnits } from './unit.map';
 
-@Controller('asset')
+@Controller('unit')
 export class UnitController {
   constructor(private unitUseCase: UnitUseCases) {}
 
   @Get()
-  async getAssets() {
-    const assetEntities = await this.unitUseCase.getMany();
-    return mapUnits(assetEntities);
+  async getunits() {
+    const unitEntities = await this.unitUseCase.getMany();
+    return mapUnits(unitEntities);
   }
 
   @Post()
-  async createAsset(@Body() assetDto: CreateUnitDto) {
-    const assetEntity = await this.unitUseCase.create(assetDto);
-    return mapUnits([assetEntity]);
+  async createunit(@Body() unitDto: CreateUnitDto) {
+    const unitEntity = await this.unitUseCase.create(unitDto);
+    return mapUnits([unitEntity]);
   }
 }
