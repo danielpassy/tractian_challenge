@@ -5,10 +5,15 @@ export class UnitEntity {
 
   id: number;
   name: string;
-  localization: {
-    lat: number;
-    lng: number;
-    address: string;
-  };
+  localization: Localization;
   createdAt: Date;
+}
+
+export class Localization {
+  public constructor(init?: Partial<UnitEntity>) {
+    Object.assign(this, init);
+  }
+  lat: number;
+  lng: number;
+  address: string;
 }

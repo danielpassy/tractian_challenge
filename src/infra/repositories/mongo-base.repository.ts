@@ -2,9 +2,9 @@ import { Model } from 'mongoose';
 import { IGenericRepository } from './generic.repository';
 
 export class MongoBaseRepository<T> implements IGenericRepository<T> {
-  _mongoDocument: Model<T>;
+  _mongoDocument: Model<any & Document>;
 
-  constructor(repository: Model<T>) {
+  constructor(repository: Model<any & Document>) {
     this._mongoDocument = repository;
   }
 
