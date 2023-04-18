@@ -3,7 +3,7 @@ import { CreateUnitDto } from 'src/application/dtos';
 import { UnitUseCases } from 'src/application/use-cases';
 import { mapUnits } from './unit.map';
 
-@Controller('unit')
+@Controller('units')
 export class UnitController {
   constructor(private unitUseCase: UnitUseCases) {}
 

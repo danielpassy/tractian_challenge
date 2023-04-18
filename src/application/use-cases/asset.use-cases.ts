@@ -1,4 +1,4 @@
-import { AssetEntity, UnitEntity, UserEntity } from 'src/domain/entities';
+import { AssetEntity } from 'src/domain/entities';
 import { CreateAssetDto } from '../dtos';
 import { AssetRepository } from 'src/infra/repositories/asset.repository';
 import { Injectable } from '@nestjs/common';

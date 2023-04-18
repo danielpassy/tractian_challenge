@@ -1,25 +1,24 @@
 import { UserEntity } from 'src/domain/entities';
-import { IAuth } from '../interfaces';
 import { EmailAlreadyUsedError, UserNotFoundError } from '../errors';
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from 'src/infra/repositories';
+import { LoginDto } from '../dtos';
+import { Injectable } from '@nestjs/common';
 
-export class AuthUseCases implements IAuth {
+@Injectable()
+export class AuthUseCases {
   constructor(
     private userRepository: UserRepository,
     private jwtService: JwtService,
   ) {}
 
-  async login(
-    email: string,
-    password: string,
-  ): Promise<{ access_token: string }> {
-    const user = await this.userRepository.findByEmail(email);
-    if (!user) {
-      throw new UserNotFoundError();
-    }
+  async login(loginDto: LoginDto): Promise<{ access_token: string }> {
+    // const user = await this.userRepository.findByEmail(loginDto.email);
+    // if (!user) {
+    //   throw new UserNotFoundError();
+    // }
 
-    const payload = { email: user.email, sub: user.userId };
+    const payload = { email: loginDto.email, sub: 123 };
     return {
       access_token: await this.jwtService.signAsync(payload),
     };

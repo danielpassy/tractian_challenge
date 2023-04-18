@@ -6,7 +6,7 @@ export const mapUnits = (unitEntities: UnitEntity[]) => {
     return {
       id: unitEntity.id,
       name: unitEntity.name,
-      Localization: {
+      localization: {
         lat: unitEntity.localization.lat,
         lng: unitEntity.localization.lng,
         address: unitEntity.localization.address,

@@ -1,7 +1,8 @@
 import { UserEntity } from 'src/domain/entities';
+import { LoginDto } from '../dtos';
 
 export interface IAuth {
-  login(email: string, password: string): Promise<{ access_token: string }>;
+  login(loginDto: LoginDto): Promise<{ access_token: string }>;
 
   register(email: string, password: string, name: string): Promise<UserEntity>;
 }
