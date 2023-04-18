@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://root:example@localhost:27017/tractian?authSource=admin',
+      `mongodb+srv://danielpassy:${process.env.DATABASE_PASSWORD}@brinks.klmqwgw.mongodb.net/?retryWrites=true&w=majority`,
     ),
   ],
   providers: [],

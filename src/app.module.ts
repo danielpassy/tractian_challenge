@@ -10,7 +10,7 @@ import { RepositoriesModule } from './infra/repositories/repositories.module';
   imports: [
     JwtModule.register({
       global: true,
-      secret: jwtConstants.secret,
+      secret: process.env.jwtConstants,
     }),
     DatabaseModule,
     ControllersModule,
