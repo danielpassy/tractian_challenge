@@ -14,6 +14,7 @@ export class UnitUseCases {
     const unitEntity = new UnitEntity({
       name: unit.name,
       localization: unit.localization,
+      assets: [],
     });
     return await this.unitRepository.create(unitEntity);
   }

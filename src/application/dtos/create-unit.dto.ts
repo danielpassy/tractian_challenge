@@ -26,7 +26,4 @@ export class CreateUnitDto {
 
   @IsString()
   name: string;
-
-  @IsMongoId()
-  unit_id: string;
 }

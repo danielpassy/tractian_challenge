@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
 import { Localization, UnitEntity } from 'src/domain/entities';
 import { Asset } from './asset.schema';
 
@@ -21,7 +21,7 @@ export class Unit {
   )
   localization: Localization;
 
-  @Prop()
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Asset' }] })
   assets: Asset[];
 
   @Prop()

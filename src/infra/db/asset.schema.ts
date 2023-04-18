@@ -21,12 +21,6 @@ export class Asset {
   @Prop()
   model: ModelEnum;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-  owner: User;
-
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Unit' })
-  assets: Unit[];
-
   @Prop()
   status: StatusEnum;
 

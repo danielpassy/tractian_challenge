@@ -1,4 +1,5 @@
 import { UnitEntity } from 'src/domain/entities';
+import { mapAssets } from '../asset/asset.map';
 
 export const mapUnits = (unitEntities: UnitEntity[]) => {
   return unitEntities.map((unitEntity) => {
@@ -11,6 +12,7 @@ export const mapUnits = (unitEntities: UnitEntity[]) => {
         address: unitEntity.localization.address,
       },
       createdAt: unitEntity.createdAt,
+      assets: mapAssets(unitEntity.assets),
     };
   });
 };

@@ -35,7 +35,7 @@ export class AssetUseCases {
       unit_id: assetDto.unit_id,
     });
     const asset = await this.assetRepository.create(assetEntity);
-    await this.unitRepository.addAsset(asset);
+    await this.unitRepository.addAsset(asset, assetDto.unit_id);
     return asset;
   }
 }
