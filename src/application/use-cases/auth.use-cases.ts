@@ -26,7 +26,7 @@ export class AuthUseCases {
       loginDto.password,
       user.password,
     );
-    if (isCorrectPassword) {
+    if (!isCorrectPassword) {
       throw new IncorrectPasswodError();
     }
 

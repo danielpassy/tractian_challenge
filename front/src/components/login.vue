@@ -43,8 +43,12 @@ const login = async () => {
     },
     body: JSON.stringify({ email: email.value, password: password.value })
   })
-  const token = await res.json()['access_token']
-  localStorage.setItem('token', token)
+  const data = await res.json()
+  if (data.error) {
+    alert(data.error)
+    return
+  }
+  localStorage.setItem('token', data['access_token'])
   router.push('/')
 }
 
