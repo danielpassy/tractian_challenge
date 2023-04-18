@@ -55,6 +55,17 @@ const props = defineProps({
 
 <style scoped>
 .card {
+  height: fit-content;
+  min-height: 40%;
+  padding: 12px;
   margin: 16px;
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  position: relative;
+  width: 300px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 </style>

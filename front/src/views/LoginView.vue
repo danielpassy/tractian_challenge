@@ -10,10 +10,19 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
-const emit = defineEmits(['login'])
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+onMounted(() => {
+  if (localStorage.getItem('token')) {
+    router.push('/login')
+  }
+});
 const email = ref('');
 const password = ref('');
+
 
 const login = async () => {
   const res = await fetch('http://localhost:3000/api/auth/', {
@@ -24,8 +33,9 @@ const login = async () => {
     },
     body: JSON.stringify({email: email.value, password: password.value})
   })
-  const data = await res.json() 
-  emit('login', data['access_token']);
+  const token = await res.json()['access_token'] 
+  localStorage.setItem('token', token)
+  router.push('/')
 }
 
 </script>
