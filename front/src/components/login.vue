@@ -11,18 +11,21 @@
 
 <script setup>
 import {ref} from 'vue';
+const emit = defineEmits(['login'])
 const email = ref('');
 const password = ref('');
 
 const login = async () => {
-  res = await fetch('http://localhost:3000/api/data', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({email: email.value, password: password.value})
-})
-  $emit('login', res);
+  const res = await fetch('http://localhost:3000/api/auth/', {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({email: email.value, password: password.value})
+  })
+  const data = await res.json() 
+  emit('login', data['access_token']);
 }
 
 </script>
