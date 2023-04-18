@@ -9,8 +9,9 @@ export class UserRepository extends MongoBaseRepository<UserEntity> {
     super(userModel);
   }
   async findByEmail(email: string): Promise<UserEntity> | null {
-    return await this._mongoDocument.find({
+    const a = await this._mongoDocument.find({
       email,
-    })[0];
+    });
+    return a[0];
   }
 }

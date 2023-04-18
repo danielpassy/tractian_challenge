@@ -8,6 +8,14 @@ export class UnitRepository extends MongoBaseRepository<UnitEntity> {
   constructor(@InjectModel(Unit.name) private userModel: Model<UnitDocument>) {
     super(userModel);
   }
+
+  async get(id: any): Promise<UnitEntity | null> {
+    const entry = await this._mongoDocument
+      .findById(id)
+      .populate({ path: 'assets' })
+      .exec();
+    return entry?.toEntity() || null;
+  }
   async getAll(): Promise<UnitEntity[]> {
     const entries = await this._mongoDocument
       .find()

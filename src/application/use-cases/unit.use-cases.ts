@@ -7,6 +7,10 @@ import { Injectable } from '@nestjs/common';
 export class UnitUseCases {
   constructor(private unitRepository: UnitRepository) {}
 
+  async get(id: string): Promise<UnitEntity> {
+    return await this.unitRepository.get(id);
+  }
+
   async getMany(): Promise<UnitEntity[]> {
     return await this.unitRepository.getAll();
   }

@@ -11,7 +11,7 @@ import { CreateAssetDto } from 'src/application/dtos';
 import { AssetUseCases } from 'src/application/use-cases';
 import { UnitNotFoundError, UserNotFoundError } from 'src/application/errors';
 
-@Controller('asset')
+@Controller('assets')
 export class AssetController {
   constructor(private assetUseCase: AssetUseCases) {}
 

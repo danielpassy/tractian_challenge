@@ -1,42 +1,17 @@
 <template>
-  <div class="container">
-    <h1>Login</h1> <br>
-    <span>Email</span>
-    <input type="email" v-model="email" /> <br>
-    <span>Senha</span>
-    <input type="password" v-model="password" /> <br>
-    <button @click="login">Login</button>
-  </div>
+  <Login v-if="step === 0" @register="flipStep" />
+  <Register v-else @login="flipStep" />
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router'
+import Login from '@components/login.vue';
+import Register from '@components/register.vue';
+import { ref, } from 'vue';
+const step = ref(0);
 
-const router = useRouter()
-
-onMounted(() => {
-  if (localStorage.getItem('token')) {
-    router.push('/login')
-  }
-});
-const email = ref('');
-const password = ref('');
-
-
-const login = async () => {
-  const res = await fetch('http://localhost:3000/api/auth/', {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({email: email.value, password: password.value})
-  })
-  const token = await res.json()['access_token'] 
-  localStorage.setItem('token', token)
-  router.push('/')
-}
+const flipStep = () => {
+  step.value = step.value === 0 ? 1 : 0;
+};
 
 </script>
 <style>
@@ -47,6 +22,5 @@ const login = async () => {
   height: 100vh;
   flex-direction: column;
 }
-
 </style>
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateUnitDto } from 'src/application/dtos';
 import { UnitUseCases } from 'src/application/use-cases';
 import { mapUnits } from './unit.map';
@@ -8,13 +8,20 @@ export class UnitController {
   constructor(private unitUseCase: UnitUseCases) {}
 
   @Get()
-  async getunits() {
+  async getUnits() {
     const unitEntities = await this.unitUseCase.getMany();
     return mapUnits(unitEntities);
   }
 
+  @Get(':id/')
+  async getUnit(@Param('id') id: string) {
+    const unitEntity = await this.unitUseCase.get(id);
+    const units = mapUnits([unitEntity])[0];
+    return units;
+  }
+
   @Post()
-  async createunit(@Body() unitDto: CreateUnitDto) {
+  async createUnit(@Body() unitDto: CreateUnitDto) {
     const unitEntity = await this.unitUseCase.create(unitDto);
     return mapUnits([unitEntity]);
   }
