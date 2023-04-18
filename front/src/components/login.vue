@@ -15,7 +15,7 @@ const email = ref('');
 const password = ref('');
 
 const login = async () => {
-  res = await fetch('https://localhost:3000/api/data', {
+  res = await fetch('http://localhost:3000/api/data', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'

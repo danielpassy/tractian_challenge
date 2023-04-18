@@ -3,14 +3,14 @@
     v-if="step === 0"
     @login="openUnitPage"
   />
-  <OverviewPage
+  <Overview
     v-else
     />
 </template>
 
 <script setup>
 import LoginComponent from './components/login.vue';
-import LoginComponent from './components/overview.vue';
+import Overview from './components/overview.vue';
 import {ref} from 'vue';
 
 const step = ref(0);
