@@ -7,4 +7,5 @@ export class UserEntity {
   userId: string;
   name: string;
   id?: any;
+  company_id: string;
 }

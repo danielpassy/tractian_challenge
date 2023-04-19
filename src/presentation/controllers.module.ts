@@ -4,6 +4,7 @@ import { UseCasesModule } from 'src/application/use-cases/use-cases.module';
 import { UnitController } from './unit/unit.controller';
 import { AuthController } from './auth/auth.controller';
 import { UserController } from './user/user.controller';
+import { CompanyController } from './company/company.controller';
 
 @Module({
   imports: [UseCasesModule],
@@ -12,6 +13,7 @@ import { UserController } from './user/user.controller';
     UnitController,
     AuthController,
     UserController,
+    CompanyController,
   ],
 })
 export class ControllersModule {}

@@ -6,6 +6,8 @@ import { Asset, AssetSchema } from '../db/asset.schema';
 import { Unit, UnitSchema } from '../db/unit.schema';
 import { AssetRepository } from './asset.repository';
 import { UnitRepository } from './unit.repository';
+import { Company, CompanySchema } from '../db/company.schema';
+import { CompanyRepository } from './company.repository';
 
 @Module({
   imports: [
@@ -13,9 +15,15 @@ import { UnitRepository } from './unit.repository';
       { name: User.name, schema: UserSchema },
       { name: Asset.name, schema: AssetSchema },
       { name: Unit.name, schema: UnitSchema },
+      { name: Company.name, schema: CompanySchema },
     ]),
   ],
-  exports: [UserRepository, AssetRepository, UnitRepository],
-  providers: [UserRepository, AssetRepository, UnitRepository],
+  exports: [UserRepository, AssetRepository, UnitRepository, CompanyRepository],
+  providers: [
+    UserRepository,
+    AssetRepository,
+    UnitRepository,
+    CompanyRepository,
+  ],
 })
 export class RepositoriesModule {}

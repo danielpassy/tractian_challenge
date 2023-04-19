@@ -9,6 +9,7 @@ import { UserRepository } from 'src/infra/repositories';
 import { LoginDto } from '../dtos';
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { RegisterDto } from '../dtos/register.dto';
 
 @Injectable()
 export class AuthUseCases {
@@ -36,17 +37,18 @@ export class AuthUseCases {
     };
   }
 
-  async register(RegisterDto): Promise<{ access_token: string }> {
-    const userEntry = await this.userRepository.findByEmail(RegisterDto.email);
+  async register(registerDto: RegisterDto): Promise<{ access_token: string }> {
+    const userEntry = await this.userRepository.findByEmail(registerDto.email);
     if (userEntry) {
       throw new EmailAlreadyUsedError();
     }
-    const passwordHash = await bcrypt.hash(RegisterDto.password, 10);
+    const passwordHash = await bcrypt.hash(registerDto.password, 10);
 
     const user = new UserEntity({
-      email: RegisterDto.email,
+      email: registerDto.email,
       password: passwordHash,
-      name: RegisterDto.name,
+      name: registerDto.name,
+      company_id: registerDto.company_id,
     });
     await this.userRepository.create(user);
     const payload = { email: user.email, sub: user.password };
