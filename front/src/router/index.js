@@ -6,7 +6,7 @@ import UnitView from '../views/UnitView.vue'
 import CreateAsset from '../views/CreateAssetView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(`${import.meta.env.BASE_URL}/tractian_challenge/`),
   routes: [
     {
       path: '/',
