@@ -27,14 +27,14 @@ const openCreateUnitPage = () => { router.push('/create-unit'); }
 
 onMounted(() => {
   if (!localStorage.getItem('token')) {
-    router.push('/login')
+    router.push({ name: 'login' })
   }
   getUnits();
 });
 
 const logout = () => {
   localStorage.removeItem('token');
-  router.push('/login');
+  router.push({ name: 'login' });
 };
 const openAssetDialog = (asset) => {
   console.log(asset.value);

@@ -45,7 +45,7 @@ const openAssetDialog = (asset) => {
 
 const openUnitPage = () => {
   console.log(props.unit.id)
-  router.push(`unit/${props.unit.id}`);
+  router.push({ name: 'unit', params: { id: 123 } });
 };
 
 const alertingAssets = () => {

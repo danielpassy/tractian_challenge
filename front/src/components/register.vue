@@ -53,13 +53,13 @@ const login = async () => {
     error.value = data.message
   } else {
     localStorage.setItem('token', data['access_token'])
-    router.push('/')
+    router.push({ name: 'home' })
   }
 }
 
 onMounted(() => {
   if (localStorage.getItem('token')) {
-    router.push('/login')
+    router.push({ name: 'login' })
   }
 });
 </script>

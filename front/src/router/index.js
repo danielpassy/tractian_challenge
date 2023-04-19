@@ -6,31 +6,35 @@ import UnitView from '../views/UnitView.vue'
 import CreateAsset from '../views/CreateAssetView.vue'
 
 const router = createRouter({
-  publicPath: import.meta.env.DEV ? '/' : '/tractian_challenge',
+  publicPath: import.meta.env.DEV ?  '/' : '/tractian_challenge/',
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      redirect: { name: 'home' }
+    },
+    {
+      path: '/tractian_challenge/',
       name: 'home',
       component: OverviewView
     },
     {
-      path: '/create-unit',
+      path: '/tractian_challenge/create-unit',
       name: 'create-unit',
       component: CreateUnitView
     },
     {
-      path: '/login',
+      path: '/tractian_challenge/login',
       name: 'login',
       component: LoginView
     },
     {
-      path: '/unit/:id',
+      path: '/tractian_challenge/unit/:id',
       name: 'unit',
       component: UnitView
     },
     {
-      path: '/create-asset',
+      path: '/tractian_challenge/create-asset',
       name: 'create-asset',
       component: CreateAsset
     }

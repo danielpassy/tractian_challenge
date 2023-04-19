@@ -40,7 +40,7 @@ const createUnit = async () => {
   })
   const data = await res.json()
   if (!data.error) {
-    router.push('/')
+    router.push({ name: 'home' })
   } else {
     console.log(data)
     error.value = data.message

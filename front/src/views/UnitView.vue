@@ -31,7 +31,7 @@ const router = useRouter()
 const unit = ref({});
 
 const createAsset = () => {
-  router.push('/create-asset');
+  router.push({ name: 'create-asset' });
 }
 
 onMounted(async () => {

@@ -28,7 +28,7 @@ const register = () => {
 
 onMounted(() => {
   if (localStorage.getItem('token')) {
-    router.push('/login')
+    router.push({ name: 'login' })
   }
 });
 const email = ref('');
@@ -49,7 +49,7 @@ const login = async () => {
     return
   }
   localStorage.setItem('token', data['access_token'])
-  router.push('/')
+  router.push({ name: 'home' })
 }
 
 </script>
