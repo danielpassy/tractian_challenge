@@ -68,6 +68,7 @@ const getUnits = async () => {
   flex-direction: row;
   height: 100%;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .card {

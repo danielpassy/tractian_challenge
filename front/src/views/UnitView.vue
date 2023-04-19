@@ -1,5 +1,6 @@
 <template>
   <div class="full-page" v-if="unit.id">
+    <button @click="backHomePage">Back</button>
     <div class="card">
       <h2>
         {{ unit.name }}
@@ -11,7 +12,9 @@
 
       <h3>Assets</h3>
       <button @click="createAsset">Create Asset</button> <br>
-      <AssetCard v-for="asset in unit.assets" :key="asset.name" :asset="asset" />
+      <div class="flex">
+        <AssetCard @click="openAssetDialog" v-for="asset in unit.assets" :key="asset.name" :asset="asset" />
+      </div>
 
     </div>
     <AssetDialog ref="assetDialog" />
@@ -29,6 +32,10 @@ const route = useRoute()
 const router = useRouter()
 
 const unit = ref({});
+
+const backHomePage = () => {
+  router.push({ name: 'home' });
+}
 
 const createAsset = () => {
   router.push({ name: 'create-asset' });
@@ -58,11 +65,16 @@ const openAssetDialog = (asset) => {
 <style scoped>
 .card {
   min-height: 100%;
-  width: 45%;
+  width: 100%;
 }
 
 .full-height {
   width: 100%;
   height: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

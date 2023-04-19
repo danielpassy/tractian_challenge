@@ -1,13 +1,14 @@
 <template>
-  <div class="card">
-
-    <img :src="props.asset.image" />
-    <p>Description: {{ props.asset.description }}</p>
-    <p>Model: {{ props.asset.model }}</p>
-    <p>Owner ID: {{ props.asset.owner_id }}</p>
-    <p>Status: {{ props.asset.status }}</p>
-    <p>Health Level: {{ props.asset.health_level }}</p>
-    <p>Internal ID: {{ props.asset.id }}</p>
+  <div class="wrapper">
+    <div class="card">
+      <img :src="props.asset.image" />
+      <p>Description: {{ props.asset.description }}</p>
+      <p>Model: {{ props.asset.model }}</p>
+      <p>Owner ID: {{ props.asset.owner_id }}</p>
+      <p>Status: {{ props.asset.status }}</p>
+      <p>Health Level: {{ props.asset.health_level }}</p>
+      <p>Internal ID: {{ props.asset.id }}</p>
+    </div>
   </div>
 </template>
 
@@ -22,9 +23,15 @@ const props = defineProps({
 
 
 <style scoped>
+.wrapper {
+  width: 40%;
+  margin: 16px;
+}
+
 .card {
   margin: 16px;
   padding: 12px;
+  width: 100%;
   height: fit-content;
   background: #fff;
   border-radius: 2px;
