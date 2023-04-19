@@ -7,6 +7,15 @@ import { mapUnits } from './unit.map';
 export class UnitController {
   constructor(private unitUseCase: UnitUseCases) {}
 
+  @Get('simplified/')
+  async getUnitsSimplifiec() {
+    const unitEntities = await this.unitUseCase.getMany();
+    return unitEntities.map((unit) => ({
+      id: unit.id,
+      name: unit.name,
+    }));
+  }
+
   @Get()
   async getUnits() {
     const unitEntities = await this.unitUseCase.getMany();

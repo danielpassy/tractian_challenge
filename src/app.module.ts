@@ -8,11 +8,6 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    JwtModule.registerAsync({
-      useFactory: async () => ({
-        secret: process.env.jwtConstants,
-      }),
-    }),
     DatabaseModule,
     ControllersModule,
     RepositoriesModule,

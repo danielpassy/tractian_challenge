@@ -10,7 +10,7 @@
       <br />
 
       <h3>Assets</h3>
-      <button @click="createAsset">Create Asset</button>
+      <button @click="createAsset">Create Asset</button> <br>
       <AssetCard v-for="asset in unit.assets" :key="asset.name" :asset="asset" />
 
     </div>
@@ -58,7 +58,7 @@ const openAssetDialog = (asset) => {
 <style scoped>
 .card {
   min-height: 100%;
-  width: 100%;
+  width: 45%;
 }
 
 .full-height {

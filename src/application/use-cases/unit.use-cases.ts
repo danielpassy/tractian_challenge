@@ -14,6 +14,7 @@ export class UnitUseCases {
   async getMany(): Promise<UnitEntity[]> {
     return await this.unitRepository.getAll();
   }
+
   async create(unit: CreateUnitDto): Promise<UnitEntity> {
     const unitEntity = new UnitEntity({
       name: unit.name,

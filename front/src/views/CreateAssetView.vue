@@ -37,7 +37,10 @@
     <input v-model="health_level" type="number" />
     <br>
     Unit id
-    <input v-model="unit_id" type="string" />
+    <input list="unit" v-model="unit_id" type="string" />
+    <datalist id="unit">
+      <option v-for="unit in units" :key="unit.name" :value="unit.name" />
+    </datalist>
 
     <button @click="createAsset">Create Asset</button>
     <br />
@@ -48,6 +51,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { get, post } from '@utils/request'
 
 const router = useRouter()
 const name = ref('')
@@ -61,20 +65,21 @@ const unit_id = ref('')
 
 const error = ref('')
 const users = ref('')
+const units = ref('')
 
 onMounted(() => {
-  getUsers()
+  getUnits();
+  getUsers();
 })
 
+const getUnits = async () => {
+  const res = await get('units/simplified')
+  const data = await res.json();
+  units.value = data
+}
+
 const getUsers = async () => {
-  const res = await fetch('http://localhost:3000/api/users/', {
-    mode: 'cors',
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-  })
+  const res = await get('users/')
   const data = await res.json()
   users.value = data
 }
@@ -82,25 +87,20 @@ const getUsers = async () => {
 const mapUserNameToId = (userName) => {
   return users.value.find((user) => user.name === userName).id
 }
+const mapUnitNameToId = (unitName) => {
+  return units.value.find((unit) => unit.name === unitName).id
+}
 
 const createAsset = async () => {
-  const res = await fetch('http://localhost:3000/api/assets/', {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    },
-    body: JSON.stringify({
-      name: name.value,
-      image: image.value,
-      description: description.value,
-      model: model.value,
-      owner_name: mapUserNameToId(owner_name.value),
-      status: status.value,
-      health_level: health_level.value,
-      unit_id: unit_id.value
-    })
+  const res = await post('assets/', {
+    name: name.value,
+    image: image.value,
+    description: description.value,
+    model: model.value,
+    owner_id: mapUserNameToId(owner_name.value),
+    status: status.value,
+    health_level: health_level.value,
+    unit_id: mapUnitNameToId(unit_id.value)
   })
   const data = await res.json()
   if (!data.error) {

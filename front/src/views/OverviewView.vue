@@ -23,7 +23,7 @@ const units = ref({});
 
 const router = useRouter()
 
-const openCreateUnitPage = () => { router.push('/create-unit'); }
+const openCreateUnitPage = () => { router.push({ name: 'create-unit' }); }
 
 onMounted(() => {
   if (!localStorage.getItem('token')) {

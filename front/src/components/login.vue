@@ -18,6 +18,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router'
+import { post } from '@utils/request'
 
 const emit = defineEmits(['register']);
 const router = useRouter()
@@ -34,14 +35,11 @@ onMounted(() => {
 const email = ref('');
 const password = ref('');
 
+
 const login = async () => {
-  const res = await fetch('http://localhost:3000/api/auth/login/', {
-    mode: 'cors',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email: email.value, password: password.value })
+  const res = await post('auth/login/', {
+    email: email.value,
+    password: password.value
   })
   const data = await res.json()
   if (data.error) {
