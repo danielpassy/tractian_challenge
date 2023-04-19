@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { LoginDto } from 'src/application/dtos';
+import { RegisterDto } from 'src/application/dtos/register.dto';
 import {
   EmailAlreadyUsedError,
   IncorrectPasswodError,
@@ -14,9 +15,9 @@ export class AuthController {
 
   @Public()
   @Post('/register')
-  async register(@Body() loginDto: LoginDto) {
+  async register(@Body() registerDto: RegisterDto) {
     try {
-      return await this.authUseCases.register(loginDto);
+      return await this.authUseCases.register(registerDto);
     } catch (error) {
       if (error instanceof EmailAlreadyUsedError) {
         return { error: 'This email was already used' };
