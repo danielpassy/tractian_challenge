@@ -1,6 +1,5 @@
 import { Model } from 'mongoose';
 import { IGenericRepository } from './generic.repository';
-import { map } from 'rxjs';
 
 export class MongoBaseRepository<T> implements IGenericRepository<T> {
   _mongoDocument: Model<any & Document>;

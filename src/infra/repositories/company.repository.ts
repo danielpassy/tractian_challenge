@@ -1,8 +1,8 @@
-import { AssetEntity, CompanyEntity } from 'src/domain/entities';
+import { CompanyEntity } from 'src/domain/entities';
 import { MongoBaseRepository } from './mongo-base.repository';
 import { InjectModel } from '@nestjs/mongoose';
-import { Company, CompanyDocument } from '../db/Company.schema';
 import { Model } from 'mongoose';
+import { Company, CompanyDocument } from '../db/company.schema';
 
 export class CompanyRepository extends MongoBaseRepository<CompanyEntity> {
   constructor(
