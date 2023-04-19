@@ -16,6 +16,7 @@ import AssetDialog from '@components/asset-dialog.vue';
 import UnitCard from '@components/unit-card.vue';
 import { useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue';
+import { get } from '@utils/request'
 
 const assetDialog = ref(null);
 
@@ -42,14 +43,7 @@ const openAssetDialog = (asset) => {
 };
 
 const getUnits = async () => {
-  const res = await fetch('http://localhost:3000/api/units/', {
-    mode: 'cors',
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-  });
+  const res = await get('units/')
   const data = await res.json();
   units.value = data;
 };

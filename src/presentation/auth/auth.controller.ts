@@ -6,11 +6,13 @@ import {
   UserNotFoundError,
 } from 'src/application/errors';
 import { AuthUseCases } from 'src/application/use-cases';
+import { Public } from 'src/infra/auth/public.decorator';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authUseCases: AuthUseCases) {}
 
+  @Public()
   @Post('/register')
   async register(@Body() loginDto: LoginDto) {
     try {
@@ -24,6 +26,7 @@ export class AuthController {
     }
   }
 
+  @Public()
   @Post('/login')
   async login(@Body() loginDto: LoginDto) {
     try {

@@ -43,7 +43,7 @@ const login = async () => {
   })
   const data = await res.json()
   if (data.error) {
-    alert(data.error)
+    alert(data.message)
     return
   }
   localStorage.setItem('token', data['access_token'])
