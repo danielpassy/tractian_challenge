@@ -39,3 +39,7 @@ Ou seja, para realizar esse projeto, tive que aprender.
 Não deu tempo de fazer uma porção de coisas, dentre elas:
 - A parte de registrar/pegar companias ficou apenas no back, não foi implementado no front.
 - Não fez-se a associação de usuários com companias.
+- Não fez-se a edição de cada entidade.
+- As entidades não pertencem a uma compania.
+- Não foi feito upload de imagem.
+- Não foi feito testes unitários nem testes E2E.

@@ -5,6 +5,7 @@ import { ControllersModule } from './presentation/controllers.module';
 import { UseCasesModule } from './application/use-cases/use-cases.module';
 import { RepositoriesModule } from './infra/repositories/repositories.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './infra/auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
     ControllersModule,
     RepositoriesModule,
     UseCasesModule,
+    AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
