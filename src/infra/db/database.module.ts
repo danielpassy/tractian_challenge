@@ -7,7 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     // it needs to load the dotenv before accessing process.env
     MongooseModule.forRootAsync({
       useFactory: async () => ({
-        uri: `mongodb+srv://danielpassy:${process.env.DATABASE_PASSWORD}@brinks.klmqwgw.mongodb.net/?retryWrites=true&w=majority`,
+        uri: process.env.DB_URI,
       }),
     }),
   ],
