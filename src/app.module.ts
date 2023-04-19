@@ -8,9 +8,10 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    JwtModule.register({
-      global: true,
-      secret: process.env.jwtConstants,
+    JwtModule.registerAsync({
+      useFactory: async () => ({
+        secret: process.env.jwtConstants,
+      }),
     }),
     DatabaseModule,
     ControllersModule,
