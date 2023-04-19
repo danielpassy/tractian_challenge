@@ -1,5 +1,5 @@
 # Desafio BackEnd Tractian
-Esse repositório contém o desafio de backend da Tractian descrito no [seguinte link](https://tractian.notion.site/Back-End-Software-Engineer-584a6e7bbd8b4ef48fc1e59ce0f964fc)
+Esse repositório contém o desafio de backend da Tractian descrito no [seguinte link](https://tractian.notion.site/Back-End-Software-Engineer-584a6e7bbd8b4ef48fc1e59ce0f964fc).
 [back](https://thawing-ravine-54889.herokuapp.com/api/)
 [front](https://danielpassy.github.io/tractian_challenge/)
 
@@ -43,3 +43,5 @@ Não deu tempo de fazer uma porção de coisas, dentre elas:
 - As entidades não pertencem a uma compania.
 - Não foi feito upload de imagem.
 - Não foi feito testes unitários nem testes E2E.
+- Muitas mudanças da UX e na lógica de negócio do dash poderiam ser feitas.
+- Muitas outras coisas.
