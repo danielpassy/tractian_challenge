@@ -8,6 +8,13 @@ export class UserRepository extends MongoBaseRepository<UserEntity> {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {
     super(userModel);
   }
+  async getByName(name: string): Promise<UserEntity> | null {
+    const a = await this._mongoDocument.find({
+      name,
+    });
+    return a[0] || null;
+  }
+
   async findByEmail(email: string): Promise<UserEntity> | null {
     const a = await this._mongoDocument.find({
       email,

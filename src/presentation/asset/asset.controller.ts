@@ -29,7 +29,7 @@ export class AssetController {
     } catch (error) {
       if (error instanceof UserNotFoundError) {
         throw new HttpException(
-          `There's no User with id ${assetDto.owner_id}`,
+          `There's no User with id ${assetDto.name}`,
           HttpStatus.NOT_FOUND,
         );
       } else if (error instanceof UnitNotFoundError) {

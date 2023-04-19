@@ -10,7 +10,7 @@ export class AssetEntity {
   name: string;
   description: string;
   model: ModelEnum;
-  owner_id: string;
+  owner_name: string;
   status: StatusEnum;
   health_level: number;
   id: string;

@@ -18,7 +18,7 @@ export class AssetUseCases {
     return await this.assetRepository.getAll();
   }
   async create(assetDto: CreateAssetDto): Promise<AssetEntity> {
-    const owner = await this.userRepository.get(assetDto.owner_id);
+    const owner = await this.userRepository.getByName(assetDto.owner_name);
     const unit = await this.unitRepository.get(assetDto.unit_id);
 
     if (!owner) throw new UserNotFoundError();
@@ -31,7 +31,7 @@ export class AssetUseCases {
       model: assetDto.model,
       status: assetDto.status,
       health_level: assetDto.health_level,
-      owner_id: assetDto.owner_id,
+      owner_name: assetDto.owner_name,
       unit_id: assetDto.unit_id,
     });
     const asset = await this.assetRepository.create(assetEntity);

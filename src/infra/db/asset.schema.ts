@@ -29,6 +29,9 @@ export class Asset {
 
   @Prop()
   id: string;
+
+  @Prop()
+  owner_name: string;
 }
 
 export const AssetSchema = SchemaFactory.createForClass(Asset);

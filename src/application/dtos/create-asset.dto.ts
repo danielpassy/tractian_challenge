@@ -15,8 +15,8 @@ export class CreateAssetDto {
   @IsEnum(ModelEnum)
   model: ModelEnum;
 
-  @IsMongoId()
-  owner_id: string;
+  @IsString()
+  owner_name: string;
 
   @IsEnum(StatusEnum)
   status: StatusEnum;
