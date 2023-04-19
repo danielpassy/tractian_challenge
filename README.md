@@ -1,8 +1,10 @@
 # Desafio BackEnd Tractian
-
 Esse repositório contém o desafio de backend da Tractian descrito no [seguinte link](https://tractian.notion.site/Back-End-Software-Engineer-584a6e7bbd8b4ef48fc1e59ce0f964fc)
+[back](https://thawing-ravine-54889.herokuapp.com/api/)
+[front](https://danielpassy.github.io/tractian_challenge/)
 
 ## Os requerimentos técnicos do desafio são:
+
 - NestJs
 - Typescript
 - Express
@@ -31,3 +33,9 @@ Ou seja, para realizar esse projeto, tive que aprender.
 - Clean Architecture
 - Node.
 - Padrões de orientação a objetos
+- outros.
+
+## O que faltou?
+Não deu tempo de fazer uma porção de coisas, dentre elas:
+- A parte de registrar/pegar companias ficou apenas no back, não foi implementado no front.
+- Não fez-se a associação de usuários com companias.
