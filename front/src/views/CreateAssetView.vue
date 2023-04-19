@@ -84,9 +84,7 @@ const getUsers = async () => {
   users.value = data
 }
 
-const mapUserNameToId = (userName) => {
-  return users.value.find((user) => user.name === userName).id
-}
+
 const mapUnitNameToId = (unitName) => {
   return units.value.find((unit) => unit.name === unitName).id
 }
@@ -97,7 +95,7 @@ const createAsset = async () => {
     image: image.value,
     description: description.value,
     model: model.value,
-    owner_id: mapUserNameToId(owner_name.value),
+    owner_name: owner_name.value,
     status: status.value,
     health_level: health_level.value,
     unit_id: mapUnitNameToId(unit_id.value)

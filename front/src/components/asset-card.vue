@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="card">
-      <img :src="props.asset.image" />
+      <img :src="props.asset.image" style="max-width: 100%; height: auto;" />
       <p>Description: {{ props.asset.description }}</p>
       <p>Model: {{ props.asset.model }}</p>
-      <p>Owner ID: {{ props.asset.owner_id }}</p>
+      <p>Owner name: {{ props.asset.owner || 'no one' }}</p>
       <p>Status: {{ props.asset.status }}</p>
       <p>Health Level: {{ props.asset.health_level }}</p>
       <p>Internal ID: {{ props.asset.id }}</p>
