@@ -7,13 +7,14 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from 'src/infra/repositories';
 import { LoginDto } from '../dtos';
-import * as bcrypt from 'bcrypt';
 import { RegisterDto } from '../dtos/register.dto';
+import { EncryptService } from 'src/libs/encrypt/src';
 
 export class AuthUseCases {
   constructor(
     private userRepository: UserRepository,
     private jwtService: JwtService,
+    private encryptService: EncryptService,
   ) {}
 
   async login(loginDto: LoginDto): Promise<{ access_token: string }> {
@@ -21,7 +22,7 @@ export class AuthUseCases {
     if (!user) {
       throw new UserNotFoundError();
     }
-    const isCorrectPassword = await bcrypt.compare(
+    const isCorrectPassword = await this.encryptService.compare(
       loginDto.password,
       user.password,
     );
@@ -40,7 +41,7 @@ export class AuthUseCases {
     if (userEntry) {
       throw new EmailAlreadyUsedError();
     }
-    const passwordHash = await bcrypt.hash(registerDto.password, 10);
+    const passwordHash = await this.encryptService.hash(registerDto.password);
 
     const user = new UserEntity({
       email: registerDto.email,
