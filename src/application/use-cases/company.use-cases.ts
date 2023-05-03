@@ -1,9 +1,7 @@
 import { CompanyEntity } from 'src/domain/entities';
 import { CreateCompanyDto } from '../dtos';
-import { Injectable } from '@nestjs/common';
 import { CompanyAlreadyRegisteredError } from '../errors';
 import { CompanyRepository } from 'src/infra/repositories';
-@Injectable()
 export class CompanyUseCases {
   constructor(private companyRepository: CompanyRepository) {}
 

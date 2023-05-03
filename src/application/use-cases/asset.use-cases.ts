@@ -1,12 +1,10 @@
 import { AssetEntity } from 'src/domain/entities';
 import { CreateAssetDto } from '../dtos';
 import { AssetRepository } from 'src/infra/repositories/asset.repository';
-import { Injectable } from '@nestjs/common';
 import { UnitRepository } from 'src/infra/repositories/unit.repository';
 import { UserRepository } from 'src/infra/repositories';
 import { UnitNotFoundError, UserNotFoundError } from '../errors';
 
-@Injectable()
 export class AssetUseCases {
   constructor(
     private assetRepository: AssetRepository,

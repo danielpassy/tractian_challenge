@@ -7,11 +7,9 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from 'src/infra/repositories';
 import { LoginDto } from '../dtos';
-import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from '../dtos/register.dto';
 
-@Injectable()
 export class AuthUseCases {
   constructor(
     private userRepository: UserRepository,

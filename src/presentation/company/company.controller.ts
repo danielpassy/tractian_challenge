@@ -1,11 +1,11 @@
 import { Body, Controller, Get } from '@nestjs/common';
-import { CompanyUseCases } from 'src/application/use-cases/company.use-cases';
 import { mapCompanies } from './company.map';
 import { CreateCompanyDto } from 'src/application/dtos';
+import { CompanyUseCasesService } from 'src/infra/nest-use-cases';
 
 @Controller('company')
 export class CompanyController {
-  constructor(private readonly companyUseCases: CompanyUseCases) {}
+  constructor(private readonly companyUseCases: CompanyUseCasesService) {}
 
   @Get()
   async getCompany() {

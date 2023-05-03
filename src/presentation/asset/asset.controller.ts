@@ -8,12 +8,12 @@ import {
 } from '@nestjs/common';
 import { mapAssets } from './asset.map';
 import { CreateAssetDto } from 'src/application/dtos';
-import { AssetUseCases } from 'src/application/use-cases';
 import { UnitNotFoundError, UserNotFoundError } from 'src/application/errors';
+import { AssetUseCaseService } from 'src/infra/nest-use-cases';
 
 @Controller('assets')
 export class AssetController {
-  constructor(private assetUseCase: AssetUseCases) {}
+  constructor(private assetUseCase: AssetUseCaseService) {}
 
   @Get()
   async getAssets() {

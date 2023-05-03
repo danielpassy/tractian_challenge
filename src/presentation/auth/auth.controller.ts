@@ -6,12 +6,12 @@ import {
   IncorrectPasswodError,
   UserNotFoundError,
 } from 'src/application/errors';
-import { AuthUseCases } from 'src/application/use-cases';
 import { Public } from 'src/infra/auth/public.decorator';
+import { AuthUseCasesService } from 'src/infra/nest-use-cases';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authUseCases: AuthUseCases) {}
+  constructor(private authUseCases: AuthUseCasesService) {}
 
   @Public()
   @Post('/register')

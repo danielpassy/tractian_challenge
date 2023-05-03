@@ -1,9 +1,7 @@
 import { UnitEntity } from 'src/domain/entities';
 import { CreateUnitDto } from '../dtos';
 import { UnitRepository } from 'src/infra/repositories/unit.repository';
-import { Injectable } from '@nestjs/common';
 
-@Injectable()
 export class UnitUseCases {
   constructor(private unitRepository: UnitRepository) {}
 

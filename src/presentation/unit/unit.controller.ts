@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateUnitDto } from 'src/application/dtos';
-import { UnitUseCases } from 'src/application/use-cases';
 import { mapUnits } from './unit.map';
+import { UnitUseCasesService } from 'src/infra/nest-use-cases';
 
 @Controller('units')
 export class UnitController {
-  constructor(private unitUseCase: UnitUseCases) {}
+  constructor(private unitUseCase: UnitUseCasesService) {}
 
   @Get('simplified/')
   async getUnitsSimplifiec() {
