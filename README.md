@@ -1,51 +1,59 @@
-# Desafio BackEnd Tractian
-Esse repositório contém o desafio de backend da Tractian descrito no [seguinte link](https://tractian.notion.site/Back-End-Software-Engineer-584a6e7bbd8b4ef48fc1e59ce0f964fc).
+# Back end challenge - Clean Arch + Node + MongoDB
 
-O deploy do back foi feito no Heroku + MongoDB Atlas.
-O deploy do front, github pages.
+This repository was built for Tractian Challenge as described in [this link](https://tractian.notion.site/Back-End-Software-Engineer-584a6e7bbd8b4ef48fc1e59ce0f964fc).
+
+Backend deploy was done throught Heroku + MongoDB Atlas.
+Front end, thought, github pages.
 [back](https://thawing-ravine-54889.herokuapp.com/api/)
 [front](https://danielpassy.github.io/tractian_challenge/)
 
-## Os requerimentos técnicos do desafio são:
+(It was deployed to heroku, not anymore)
 
-- NestJs
+## Technical requirements are:
+
+- NodeJS
 - Typescript
 - Express
 - MongoDB
 - Clean Architecture
-- Deploy do back + banco no Heroku
-- Deploy do front no github pages
 
-## Os requerimentos funcionais
-- Gerenciador de unidade industrial
-- Login, cadastro e autenticação
-- Visualização e edição de `Unidade industrial` e `Ativos`
+## Technical Decisions
+
+- NestJS:
+  - It's really opinionated, it would teach me the node way of doing things, just like Django would teach me the "Pythonic way".  
+  - It's inspired by the angular heavy OOP style that fits clean arch paradigm.
+  - It's the default framework for node, so it's a good thing to learn it.
+  - It has a huge community around it, so it's more resources
+  - On the downside, applying clean architecture to it was a bit hard, since it's really opinionated.
 
 
-## O quão difícil é o desafio para mim, Daniel?
-É importante ter um contexto das minhas experiências anteriores para por esse resultado em perspectiva.
-Considero um erro meu incluir clean architecture, tornou o escopo grande demais.
 
-Atuei, nos últimos 3 anos, como dev Python (django), Vue(c/ Javascript), PostgreSQL; sair de um ambiente procedural/funcional para de orientação a objetos representa uma curva de aprendizado.
 
-Ou seja, para realizar esse projeto, tive que aprender.
+## Functional requirements
+
+- Industrial units management system.
+- Login, signin and authentication.
+- Visualization and editing of  `Industrial units` and `Assets`
+
+## Learning goals and who am I
+
+In the last 3 years, worked as a Django(Python), Vue(Javascript), SQL(PostgreSQL) developer; Django have an MVC/procedural architecture, Vue is based on Flux/Functional architecture and Postgresql have is a SQL database.
+Working with Clean architecture/OOP and NO-sql was something new to me.
+
+Besides that, I had to learn.
 
 - TypeScript
 - NestJs
 - MongoDB
 - Clean Architecture
-- Node.
-- Padrões de orientação a objetos
-- outros.
+- Node
+- OOP design patterns
 
-## O que faltou?
-Não deu tempo de fazer uma porção de coisas, dentre elas:
-- A parte de registrar/pegar companias ficou apenas no back, não foi implementado no front.
-- Não fez-se a associação de usuários com companias.
-- Não fez-se a edição de cada entidade.
-- As entidades não pertencem a uma compania.
-- Não foi feito upload de imagem.
-- Não foi feito testes unitários nem testes E2E.
-- Nâo é possível atualizar a página por conta de uso de SPA + host em um domínio com page path
-- Muitas mudanças da UX e na lógica de negócio do dash poderiam ser feitas.
-- Muitas outras coisas.
+## What is missing?
+
+- Registering companies was only implemented in the backend.
+- Associating users and companies was not done.
+- File upload was not done.
+- Testing was not done
+- Githubpages and SPA with routes is not working 100%, is not workingly. It's not possible to access sub routes directly nor to refresh the page.
+- Many other.
