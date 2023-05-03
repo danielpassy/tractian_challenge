@@ -1,5 +1,5 @@
 import { AssetEntity, UnitEntity } from 'src/domain/entities';
-import { MongoBaseRepository } from './mongo-base.repository';
+import { MongoBaseRepository } from './mongo-abstract.repository';
 import { InjectModel } from '@nestjs/mongoose';
 import { Unit, UnitDocument } from '../db/unit.schema';
 import { Model } from 'mongoose';

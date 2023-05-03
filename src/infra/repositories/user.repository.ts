@@ -1,5 +1,5 @@
 import { UserEntity } from 'src/domain/entities';
-import { MongoBaseRepository } from './mongo-base.repository';
+import { MongoBaseRepository } from './mongo-abstract.repository';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '../db/user.schema';
 import { Model } from 'mongoose';

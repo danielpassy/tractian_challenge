@@ -1,7 +1,6 @@
 import { Model } from 'mongoose';
-import { IGenericRepository } from './generic.repository';
 
-export class MongoBaseRepository<T> implements IGenericRepository<T> {
+export abstract class MongoBaseRepository<T> {
   _mongoDocument: Model<any & Document>;
 
   constructor(repository: Model<any & Document>) {
